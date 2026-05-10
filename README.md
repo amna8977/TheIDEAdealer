@@ -1,7 +1,7 @@
 # TheIDEAdealer
 ===============
 
-The Idea Dealer is a button-powered robot that gives random coding project ideas.
+The Idea Dealer is a button-powered card table that gives random coding project ideas.
 Press the robot button, and the computer or website speaks an idea out loud.
 
 
