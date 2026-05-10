@@ -1,5 +1,4 @@
 # TheIDEAdealer
-The Idea Dealer
 ===============
 
 The Idea Dealer is a button-powered robot that gives random coding project ideas.
