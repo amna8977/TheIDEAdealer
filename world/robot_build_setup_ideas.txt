@@ -1,0 +1,69 @@
+BRING 
+Playhouse Pipes
+dumbell(s)?
+Cardboard ofc
+monitor
+Arduino Uno
+Push button
+USB cable
+Laptop/computer
+Speaker
+Cardboard/wood robot body
+
+
+
+
+
+
+
+
+
+
+
+
+IDEA man Robot Build Setup Ideas
+================================
+
+Recommended robot height:
+- 4 feet 11 inches can work well.
+- This makes the robot feel more human-sized and like a real character.
+
+Suggested proportions:
+- Total height: 59 inches
+- Head: 12 to 16 inches tall
+- Torso: 24 to 30 inches tall
+- Base/legs: 14 to 20 inches tall
+- Width: 20 to 28 inches
+- Button height: 36 to 44 inches from the floor
+
+Screen placement:
+- Put the screen in the chest or face area.
+- Chest placement is easier if you are using a laptop, monitor, or tablet.
+- Put the button just below the screen so people can press it and see the idea.
+
+Bottom/base:
+- Use a heavy, wide base so the robot does not tip over.
+- A good base size is about 24 to 30 inches wide and 16 to 24 inches deep.
+
+
+Things to put inside the base for weight:
+- Books
+- Bricks
+- Sandbags
+- Water bottles
+- Dumbbells
+
+Design idea:
+- Make the base look like a Vegas stage platform.
+- Use black, red, and gold colors.
+- Add card suit symbols.
+- Add fake casino lights.
+- Put an IDEA man sign on the front.
+
+Important tip:
+- Avoid skinny legs as the main support.
+- Build the real support as a sturdy box or platform.
+- You can add cardboard legs on the outside just for decoration.
+
+
+world\robot-ideaman python .\robot_ideaman.py

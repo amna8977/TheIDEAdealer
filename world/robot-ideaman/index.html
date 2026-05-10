@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="Untitled design.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single+Ink:wght@100..900&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Idea Dealer</title>
+  <style>
+    :root {
+      color-scheme: light;
+      color: #fff8dc;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: beige;
+      background-image: none;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    main {
+      width: min(560px, 100%);
+      display: grid;
+      gap: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 40px;
+      line-height: 1.05;
+    }
+
+    p {
+      margin: 0;
+      color: #fff8dc;
+      line-height: 1.5;
+    }
+
+    #idea {
+      min-height: 72px;
+      padding: 18px;
+      border: 2px solid #ffd166;
+      border-radius: 8px;
+      background: #300018;
+      box-shadow: 0 0 24px rgba(255, 209, 102, 0.45);
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    button {
+      width: fit-content;
+      border: 0;
+      border-radius: 8px;
+      background: #b00020;
+      color: white;
+      padding: 12px 18px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ff1744;
+    }
+
+    button:disabled {
+      background: #5f2a35;
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .page-link {
+      width: fit-content;
+      border-radius: 8px;
+      border: 2px solid #ffd166;
+      color: #fff8dc;
+      padding: 10px 16px;
+      text-decoration: none;
+      font-weight: 700;
+      background: rgba(48, 0, 24, 0.78);
+    }
+
+    .page-link:hover {
+      background: #ffd166;
+      color: #300018;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>The Idea Dealer</h1>
+    <p>Step up to the neon table. Press your macropad key, any keyboard key, or the button.</p>
+    <div id="idea" aria-live="polite">Think of a project card...</div>
+    <button id="ideaButton" type="button">Reveal my card</button>
+    <a class="page-link" href="robot_voice.html">Robot voice mode</a>
+  </main>
+
+  <script>
+    const codingIdeas = [
+    "Build a simple calculator app.",
+    "Create a 'guess the number' game.",
+    "Make a digital pet that can eat, sleep, and play.",
+    "Design a personal daily planner.",
+    "Develop a text-based adventure game.",
+    "Write a program that tells you a random fun fact.",
+   "Real-time chat application using WebSocket technology.",
+   "Tip calculator with modern UI using HTML, CSS, and JavaScript.", 
+    "Temperature converter between Celsius, Fahrenheit, and Kelvin. ",
+    "Testimonial slider for a portfolio website. ",
+    "To-do list with drag-and-drop functionality.",
+    "Recipe app with search and filter options.",
+    "Blog platform with markdown support.",
+    "E-commerce product catalog with shopping cart.",
+    "Mobile App Projects",
+    "Fitness tracker with step counting and calorie tracking.",
+    "Habit tracker with daily reminders.",
+    "Expense tracker with charts and analytics.",
+    "Meditation timer with soundscapes.",
+    "Grocery list app with barcode scanning.",
+    "Language learning flashcards app.",
+    "Local events finder using geolocation.",
+    "QR code scanner and generator.",
+    "Music playlist manager.",
+    "Photo filter and editor app.",
+    "Data Science & AI Projects",
+    "Stock price predictor using machine learning.",
+    "Sentiment analysis on social media posts.",
+    "Movie recommendation system.",
+    "Handwritten digit recognition with neural networks.",
+    "Spam email classifier.",
+    "Image caption generator.",
+    "Chatbot for customer support.",
+    "Predictive maintenance for machinery.",
+    "COVID-19 data visualization dashboard.",
+    "Fraud detection system for transactions.",
+    "Automation & Scripting Projects",
+    "Automated email sender with scheduling.",
+    "Web scraper for news articles.",
+    "File organizer that sorts files by type.",
+    "PDF merger and splitter tool.",
+    "Automated backup script for local files.",
+    "Social media post scheduler.",
+    "Password generator and manager.",
+    "Bulk image resizer.",
+    "Automated report generator from CSV files.",
+    "System monitoring dashboard.",
+    "Game Development Projects",
+    "Tic-tac-toe with AI opponent.",
+    "Snake game with increasing difficulty.",
+    "Memory card matching game.",
+    "Platformer game with levels and scoring.",
+    "Quiz game with multiple categories.",
+    "Puzzle slider game.",
+    "Space shooter game.",
+    "Multiplayer online board game.",
+    "Word search generator.",
+    "Sudoku solver and generator.",
+    "Advanced Web & Full Stack Projects",
+    "Social media platform with user authentication.",
+    "Online code editor with syntax highlighting.",
+    "Collaborative document editor.",
+    "Real-time stock trading simulator.",
+    "Online learning platform with quizzes.",
+    "Event booking system.",
+    "Forum with upvote/downvote system.",
+    "Job board with resume upload.",
+    "Video streaming platform.",
+    "Cryptocurrency portfolio tracker.",
+    "IoT & Hardware Projects",
+    "Smart home light controller.",
+    "Temperature and humidity monitor.",
+    "Automated plant watering system.",
+    "Motion detection alarm system.",
+    "Smart door lock with mobile app.",
+    "Weather station with data logging.",
+    "Voice-controlled appliances.",
+    "Smart mirror with calendar and news.",
+    "Air quality monitor.",
+    "Pet feeder automation.",
+    "Random quote generator. ",
+    "Countdown timer.",
+    "Dice roller simulator.",
+    "Color palette generator.",
+    "BMI calculator.",
+    "Password strength checker.",
+    "Number guessing game.",
+    "Simple calculator.",
+    "Digital clock.",
+    "Currency converter.",
+    "Fun & Creative Projects",
+    "Meme generator.",
+    "ASCII art generator.",
+    "Music visualizer.",
+    "Interactive story game.",
+    "Virtual pet simulator.",
+    "Emoji translator.",
+    "Typing speed test.",
+    "Random joke generator.",
+    "Name generator for characters.",
+    "Daily motivational quote app.",
+    "Miscellaneous Projects",
+    "Markdown to HTML converter.",
+    "Expense splitter for groups.",
+    "URL shortener.",
+    "File encryption/decryption tool.",
+    "Calendar with event reminders.",
+    "Habit streak tracker.",
+    "Resume builder.",
+    "Portfolio website generator.",
+    "Interactive map with markers.",
+    "Make Geometry Dash using Scratch",
+    "ROBOT????????",
+    "Mood-Based Music Recommender",
+    "Virtual Pet Simulator",
+  "Custom Alarm Clock App",
+    "Weather Dashboard",
+    "Habit Tracker",
+    "Online Flashcard Maker",
+    "Random Story Generator",
+    "Typing Speed Tester",
+    "Multiplayer Tic-Tac-Toe",
+    "Budget Calculator",
+    "Recipe Recommendation App",
+    "Workout Tracker",
+    "Pomodoro Timer",
+    "Personal Diary Website",
+    "Quiz Game",
+    "Snake Game",
+    "Space Shooter Game",
+    "Pixel Art Maker",
+    "Meme Generator",
+    "School Schedule Organizer",
+    "Study Group Finder",
+    "Language Learning App",
+    "Voice-Controlled Notes",
+    "AI Chatbot",
+    "Countdown Timer",
+    "Fitness Challenge App",
+    "Expense Splitter",
+    "Movie Review Website",
+    "Book Recommendation Engine",
+    "Online Poll Creator",
+    "Daily Motivation App",
+    "Custom Wallpaper Generator",
+    "Simple Social Network",
+    "Event Countdown Website",
+    "Music Visualizer",
+    "Digital Whiteboard",
+    "Flashlight Morse Code App",
+    "Study Streak Tracker",
+    "Trivia Battle Game",
+    "Mini Blogging Platform",
+    "AI Art Prompt Generator",
+    "Virtual Aquarium",
+    "Friend Birthday Reminder",
+    "Inventory Tracker",
+    "Custom Calendar App",
+    "Task Prioritizer",
+    "Simple Password Manager",
+    "Emoji Translator",
+    "Dream Journal",
+    "Random Joke Generator",
+    "Color Palette Creator",
+    "Interactive Map Quiz",
+    "Pet Care Reminder",
+    "Online Drawing Game",
+    "Fitness Leaderboard",
+    "Simple Banking Simulator",
+    "Travel Planner",
+    "Homework Timer",
+    "AI Debate Bot",
+    "Restaurant Review App",
+    "Virtual Escape Room",
+    "Chess Timer",
+    "Digital Cookbook",
+    "Movie Night Picker",
+    "AI Name Generator",
+    "Plant Watering Reminder",
+    "Secret Message Encoder",
+    "Interactive Story Game",
+    "Local Event Finder",
+    "Voice Journal",
+    "Fantasy Sports Tracker",
+    "Simple CAD Tool",
+    "Pet Adoption Website",
+    "Smart Mirror Dashboard",
+    "Online Study Timer",
+    "Car Maintenance Tracker",
+    "Goal Achievement Tracker",
+    "Board Game Scorekeeper",
+    "Online Marketplace",
+    "AI Poetry Generator",
+    "Digital Scrapbook",
+    "Mindfulness Reminder App",
+    "Custom QR Code Generator",
+    "Mood Journal",
+    "Friendship Quiz",
+    "Virtual Classroom",
+    "Coding Challenge App",
+    "AI Resume Builder",
+    "Study Playlist Generator",
+    "Photo Filter App",
+    "Online Debate Platform",
+    "Homework Reward System",
+    "Cloud File Organizer",
+    "Interactive Timeline",
+    "Simple Wiki Website",
+    "AI Dungeon Game",
+    "Digital Time Capsule",
+    "Voice Changer App",
+    "Parking Spot Finder",
+    "Inventory Scanner",
+    "Crypto Price Tracker",
+    "Dog Breed Identifier",
+    "Fantasy Map Generator",
+    "Smart Grocery List",
+    "Interactive Chemistry Quiz",
+    "AI Flashcard Generator",
+    "Virtual Library",
+    "Anime Recommendation App",
+    "Simple Video Editor",
+    "Online Petition Website",
+    "Chess AI",
+    "Bird Watching Logger",
+    "Classroom Noise Meter",
+    "Custom Keyboard Trainer",
+    "Study Rewards RPG",
+    "Random Outfit Picker",
+    "Digital Business Card",
+    "Workout Music Sync",
+    "Homework Trading Board",
+    "AI Meme Captioner",
+    "Reaction Time Tester",
+    "Online Karaoke App",
+    "Typing Adventure Game",
+    "Dream Vacation Planner",
+    "Virtual Fashion Designer",
+    "Local Hiking Guide",
+    "Online Escape Puzzle",
+    "Stock Market Simulator",
+    "Custom Avatar Creator",
+    "AI Song Lyric Assistant",
+    "Digital Attendance Tracker",
+    "Movie Quote Quiz",
+    "Travel Budget Calculator",
+    "Simple Podcast App",
+    "Study Buddy Matcher",
+    "Pet Health Tracker",
+    "Math Formula Explorer",
+    "AI Homework Explainer",
+    "Simple Voice Assistant",
+    "Personal Finance Tracker",
+    "Recipe Ingredient Matcher",
+    "Custom Meme Feed",
+    "Multiplayer Drawing Game",
+    "Language Exchange Platform",
+    "Interactive Science Fair",
+    "Goal Visualization App",
+    "Simple VR Tour",
+    "Random Challenge Generator",
+    "Music Guessing Game",
+    "Daily Gratitude App",
+    "Online Team Builder",
+    "Virtual Study Cafe",
+    "AI Email Drafter",
+    "Emoji Prediction Keyboard",
+    "Homework Scanner",
+    "Online Chess Tournament",
+    "Fantasy Character Creator",
+    "Recipe Nutrition Analyzer",
+    "Smart Notes Organizer",
+    "Classroom Polling App",
+    "Voice Controlled Calculator",
+    "AI Sports Commentator",
+    "Movie Recommendation Roulette",
+    "Mood Lighting Controller",
+    "Habit RPG",
+    "Virtual Planetarium",
+    "Random Drawing Prompt Generator",
+    "Online Memory Game",
+    "Pet Walking Tracker",
+    "AI Comic Generator",
+    "Simple Coding IDE",
+    "Weather-Based Outfit Picker",
+    "Digital Suggestion Box",
+    "Interactive History Quiz",
+    "Virtual Science Lab",
+    "Homework Collaboration Tool",
+    "AI Podcast Summary App",
+    "Custom Countdown Widget",
+    "Focus Music Generator",
+    "Fantasy Sports Draft Assistant",
+    "Online Flash Sale App",
+    "Digital Pet Adoption Center",
+    "AI Voice Narrator",
+    "School Lunch Voting System",
+    "Virtual Time Machine",
+    "Mood Color Tracker",
+    "AI Study Schedule Generator",
+    "Puzzle Level Editor",
+    "Friend Finder Map",
+    "Language Pronunciation Coach",
+    "Interactive Geography Explorer",
+    "Movie Collection Organizer",
+    "Custom Emoji Creator",
+    "AI Logo Generator",
+    "Virtual Concert App",
+    "Homework Completion Predictor",
+    "Travel Memory Journal",
+    "Online Debate Judge",
+    "Sleep Tracker",
+    "Simple Blogging CMS",
+    "AI Homework Quizzer",
+    "Interactive Sudoku Solver",
+    "Smart Calendar Assistant",
+    "Online Fitness Competition",
+    "Pet Mood Detector",
+    "Fantasy Quest Generator",
+    "Voice-Controlled Smart Home",
+    "Random Book Picker",
+    "AI Video Summarizer",
+    "Study Heatmap",
+    "Interactive Recipe Builder",
+    "Workout Challenge Wheel",
+    "Homework Reminder Bot",
+    "Digital Vision Board",
+    "AI Story Illustrator",
+    "Virtual Museum Tour",
+    "Friend Group Expense Tracker",
+    "Online Escape Adventure",
+    "AI Music Composer",
+    "Interactive Astronomy App",
+    "Study Habit Analyzer",
+    "Random Recipe Spinner",
+    "Voice Mood Journal",
+    "AI Math Solver",
+    "Custom T-Shirt Designer",
+    "Digital Trading Card Game",
+    "Online Study Hall",
+    "Virtual Art Gallery",
+    "Pet Feeding Scheduler",
+    "AI Debate Analyzer",
+    "Fantasy Creature Encyclopedia",
+    "Interactive Biology Explorer",
+    "Daily Goal Spinner",
+    "Virtual City Builder",
+    "Online Coding Tournament",
+    "AI Drawing Assistant",
+    "Movie Scene Recreator",
+    "Voice Translation Tool",
+    "School Event Planner",
+    "Interactive Vocabulary Builder",
+    "Music Practice Tracker",
+    "AI Fitness Coach",
+    "Random Hobby Finder",
+    "Custom Phone Theme Maker",
+    "Digital Locker Organizer",
+    "Homework Motivation App",
+    "Virtual Race Simulator",
+    "AI Presentation Generator",
+    "Simple Survey Tool",
+    "Interactive Puzzle Builder",
+    "Travel Destination Roulette",
+    "Pet Training Tracker",
+    "AI History Storyteller",
+    "Online Recipe Contest",
+    "Custom Soundboard",
+    "Fantasy Weapon Creator",
+    "Study Focus Detector",
+    "Virtual Camping Simulator",
+    "AI Voice Cloning Demo",
+    "Digital Coin Collector",
+    "Online Movie Trivia",
+    "Workout Streak Counter",
+    "Interactive Art Lessons",
+    "School Bus Tracker",
+    "AI Fact Checker",
+    "Custom Greeting Card Maker",
+    "Language Quiz Battle",
+    "Pet Name Generator",
+    "AI Presentation Coach",
+    "Interactive Timeline Creator",
+    "Virtual Treasure Hunt",
+    "Digital Homework Binder",
+    "Online Music Jam Room",
+    "AI Debate Practice Tool",
+    "Random Adventure Generator",
+    "Fitness Achievement Badges",
+    "Custom Keyboard Sound App",
+    "Movie Soundtrack Matcher",
+    "Interactive Coding Lessons",
+    "Travel Packing Assistant",
+    "AI Art Critic",
+    "Study Motivation Quotes App",
+    "Virtual Farm Simulator",
+    "Daily Water Intake Tracker",
+    "AI Career Suggestion Tool",
+    "Recipe Difficulty Analyzer",
+    "Online Puzzle Tournament",
+    "Voice-Controlled Journal",
+    "Digital Recipe Box",
+    "Custom Minecraft Skin Maker",
+    "AI Essay Outliner",
+    "Interactive Language Stories",
+    "Virtual Pet Hospital",
+    "Fitness Route Planner",
+    "AI Homework Organizer",
+    "Online Classroom Timer",
+    "Fantasy Kingdom Generator",
+    "Music Collaboration Platform",
+    "Interactive Physics Sandbox",
+    "Mood-Based Wallpaper App",
+    "AI Study Flashcards",
+    "Travel Route Visualizer",
+    "Custom Sticker Designer",
+    "Digital Habit Calendar",
+    "AI Speech Coach",
+    "Movie Ending Generator",
+    "Online Coding Mentor",
+    "Virtual Magic Shop",
+    "Interactive Fraction Game",
+    "Pet Adoption Matchmaker",
+    "Daily Productivity Tracker",
+    "AI Science Explainer",
+    "Recipe Cost Calculator",
+    "Voice Memo Organizer",
+    "Online Sports Bracket",
+    "Fantasy Spell Generator",
+    "Interactive Reading Tracker",
+    "Digital Backpack Organizer",
+    "AI Debate Topic Generator",
+    "Virtual Roller Coaster Builder",
+    "Workout Partner Matcher",
+    "Custom Emoji Keyboard",
+    "Movie Recommendation Quiz",
+    "Interactive Brain Trainer",
+    "Travel Language Helper",
+    "AI Research Assistant",
+    "Online Meme Contest",
+    "Voice Activated To-Do List",
+    "Digital Achievement Tracker",
+    "Fantasy Tavern Simulator",
+    "Interactive Art Contest",
+    "Homework Priority Sorter",
+    "AI Learning Companion",
+    "Recipe Sharing Network",
+    "Online Drawing Tournament",
+    "Virtual Wildlife Explorer",
+    "Fitness Goal Predictor",
+    "Custom Card Game Creator",
+    "AI Coding Assistant",
+    "Movie Collection Tracker",
+    "Interactive Spelling Bee",
+    "Travel Memory Map",
+    "AI Book Summarizer",
+    "Online Escape Challenge",
+    "Voice Controlled Flashcards",
+    "Digital Sports Coach",
+    "Fantasy Monster Battle",
+    "Interactive Number Puzzle",
+    "Pet Growth Tracker",
+    "AI Language Tutor",
+    "Recipe Randomizer",
+    "Virtual Theme Park Designer",
+    "Workout Progress Charts",
+    "Custom Study Widgets",
+    "AI Creative Writing Prompt Tool",
+    "Interactive Word Search Generator",
+    "Online Gaming Leaderboard",
+    "Travel Budget Planner",
+    "Fantasy Character Battle Arena",
+    "Voice-Based Calculator",
+    "Digital Daily Planner",
+    "AI Coding Quiz App",
+    "Movie Genre Analyzer",
+    "Interactive Algebra Practice",
+    "Fitness Milestone App",
+    "Custom Playlist Organizer",
+    "AI Science Quiz Generator",
+    "Online Collaboration Whiteboard",
+    "Virtual Haunted House",
+    "Recipe Timer Assistant",
+    "Study Session Recorder",
+    "Fantasy Story Builder",
+    "AI Grammar Checker",
+    "Interactive Map Builder",
+    "Pet Care Challenge App",
+    "Workout Achievement System",
+    "Custom Sound Effect Maker",
+    "Digital Library Organizer",
+    "AI News Summarizer",
+    "Travel Adventure Journal",
+    "Online Chess Coach",
+    "Voice-Controlled Reminder App",
+    "Fantasy Creature Battle Game",
+    "Interactive Chemistry Lab",
+    "AI School Assistant",
+    "Recipe Ingredient Scanner",
+    "Workout Interval Timer",
+    "Digital Pen Pal Platform",
+    "AI Joke Creator",
+    "Online Learning Tracker",
+    "Virtual Zoo Simulator",
+    "Interactive Coding Puzzle",
+    "Travel Itinerary Generator",
+    "Fantasy Castle Designer",
+    "Voice Mood Analyzer",
+    "AI Quiz Creator",
+    "Recipe Exchange Community",
+    "Digital Team Manager",
+    "Workout Music Generator",
+    "Interactive Solar System",
+    "AI Homework Calendar",
+    "Online Pixel Battle",
+    "Virtual Cafe Simulator",
+    "Study Group Chatroom",
+    "Fantasy Hero Creator",
+    "Voice Controlled Stopwatch",
+    "AI Interview Practice App",
+    "Recipe Step Visualizer",
+    "Digital Art Portfolio",
+    "Workout Heatmap Tracker",
+    "Interactive Geometry Drawer",
+    "AI Vocabulary Builder",
+    "Online Strategy Game",
+    "Travel Journal Timeline",
+    "Fantasy Dragon Creator",
+    "Voice Assistant for Students",
+    "AI Music Remix Tool",
+    "Recipe Finder by Mood",
+    "Digital Sticker Album",
+    "Workout Recovery Tracker",
+    "Interactive Quiz Tournament",
+    "AI Daily Planner",
+    "Online Card Trading System",
+    "Virtual Aquarium Builder",
+    "Study Timer With Rewards",
+    "Fantasy World Encyclopedia",
+    "Voice-Controlled Search Engine",
+    "AI Brainstorm Generator",
+    "Recipe Rating App",
+    "Digital Homework Checklist",
+    "Workout Competition App",
+    "Interactive Coding Sandbox",
+    "AI Conversation Simulator",
+    "Online Trivia Tournament",
+    "Virtual Space Explorer",
+    "Study Notes Highlighter",
+    "Fantasy Battle Strategy Tool",
+    "Voice-Controlled Weather App",
+    "AI Creative Prompt Generator",
+    "Recipe Challenge Wheel",
+    "Digital Time Management App",
+    "Workout Habit Builder",
+    "Interactive Music Trainer",
+    "AI School Schedule Optimizer",
+    "Online Drawing Collaboration",
+    "Virtual Sports Arena",
+    "Study Reward Spinner",
+    "Fantasy Puzzle Adventure",
+    "Voice Journal Analyzer",
+    "AI Productivity Assistant",
+    "Recipe Difficulty Predictor",
+    "Digital Fitness Coach",
+    "Workout Badge Collection",
+    "Interactive Learning Dashboard",
+    "AI Smart Reminder App",
+    "Online Multiplayer Maze",
+    "Virtual Road Trip Planner",
+    "Study Focus Music App",
+    "Fantasy Creature Creator",
+    "Voice Activated Game Menu",
+    "AI Movie Script Generator",
+    "Recipe Portion Calculator",
+    "Digital Goal Tracker",
+    "Workout Timer Challenge",
+    "Interactive Vocabulary Adventure",
+    "AI Story Plot Generator",
+    "Online Puzzle Creator",
+    "Virtual Island Simulator",
+    "Study Break Reminder",
+    "Fantasy Guild Manager",
+    "Voice-Controlled Calculator Game",
+    "AI Essay Feedback Tool",
+    "Recipe Nutrition Dashboard",
+    "Digital Skill Tree App",
+    "Workout Form Analyzer",
+    "Interactive Memory Trainer",
+    "AI Idea Generator",
+    "Online Classroom Assistant",
+    "Virtual Fashion Runway",
+    "Study Task Organizer",
+    "Fantasy Treasure Generator",
+    "Voice Controlled Music Player",
+    "AI Language Practice Bot",
+    "Recipe Sharing Blog",
+    "Digital Focus Tracker",
+    "Workout Route Explorer",
+    "Interactive Storybook App",
+    "AI Random Challenge App",
+    "Online Virtual Arcade",
+    "Virtual Pet Playground",
+    "Study Quiz Generator",
+    "Fantasy Card Battle Game",
+    "Voice Activated Flashlight",
+    "AI Coding Puzzle Generator",
+    "Recipe Budget Estimator",
+    "Digital Class Scheduler",
+    "Workout Motivation Tracker",
+    "Interactive Typing Adventure",
+    "AI Research Note Organizer",
+    "Online Battle Simulator",
+    "Virtual Science Explorer",
+    "Study Flashcard Battle",
+    "Fantasy Kingdom Strategy Game",
+    "Voice Reminder Assistant",
+    "AI Creative Art Generator",
+    "Recipe Collection Manager",
+    "Digital Habit Journal",
+    "Workout Stamina Tracker",
+    "Interactive Language Trainer",
+    "AI Smart Search Tool",
+    "Online Sports Prediction Game",
+    "Virtual Robotics Lab",
+    "Study Goal Dashboard",
+    "Fantasy Adventure Map",
+    "Voice Controlled Study Timer",
+    "AI Personal Tutor",
+    "Recipe Suggestion Bot",
+    "Digital Productivity Board",
+    "Workout Calorie Tracker",
+    "Interactive Puzzle Quest",
+    "AI Learning Style Analyzer",
+    "Online Multiplayer Quiz",
+    "Virtual City Explorer",
+    "Study Planner With AI",
+    "Fantasy Weapon Forge",
+    "Voice Controlled Quiz App",
+    "AI Presentation Designer",
+    "Recipe Ingredient Converter",
+    "Digital Wellness Tracker",
+    "Workout Team Challenge",
+    "Interactive Coding Tournament",
+    "AI Homework Reminder",
+    "Online RPG Builder",
+    "Virtual Art Studio",
+    "Study Mood Tracker",
+    "Fantasy Dungeon Generator",
+    "Voice Activated Notes App",
+    "AI Goal Recommendation System",
+    "Recipe Organizer Dashboard",
+    "Digital Adventure Journal",
+    "Workout Schedule Optimizer",
+    "Interactive Brain Puzzle",
+    "AI Study Assistant",
+    "Online Memory Tournament",
+    "Virtual Theme Builder",
+    "Study Challenge Generator",
+    "Fantasy Character Journal",
+    "Voice Controlled Calendar",
+    "AI Daily Motivation Generator",
+    "Recipe Planner Calendar",
+    "Digital Workout Assistant",
+    "Interactive Learning Quiz",
+    "AI Creative Thinking Tool",
+    "Online Maze Challenge",
+    "Virtual Hobby Simulator",
+    "Study Resource Organizer",
+    "Fantasy Story Generator",
+    "Voice Activated Habit Tracker",
+    "AI Skill Improvement App",
+    "Recipe Discovery Platform",
+    "Digital Exam Countdown",
+    "Workout Challenge Generator",
+    "Interactive Classroom Game",
+    "AI Flashcard Reviewer",
+    "Online Team Quiz Battle",
+    "Virtual Animal Shelter",
+    "Study Session Planner",
+    "Fantasy Mission Creator",
+    "Voice-Controlled Pomodoro Timer"
+    ];
+
+		    const ideaBox = document.querySelector("#idea");
+		    const ideaButton = document.querySelector("#ideaButton");
+		    let revealTimer = null;
+		    let isRevealing = false;
+		    const revealCooldown = 2600;
+		
+		    function setDealing(isDealing) {
+		      isRevealing = isDealing;
+		      ideaButton.disabled = isDealing;
+		      ideaButton.textContent = isDealing ? "Dealing..." : "Reveal my card";
+		    }
+		
+		    let voices = [];
+		
+		    function loadVoices() {
+		      voices = window.speechSynthesis.getVoices();
+		    }
+		
+		    if ("speechSynthesis" in window) {
+		      loadVoices();
+		      window.speechSynthesis.onvoiceschanged = loadVoices;
+		    }
+		
+		    function say(message) {
+		      if (!("speechSynthesis" in window)) {
+		        return;
+		      }
+		
+		      loadVoices();
+		      const speech = new SpeechSynthesisUtterance(message);
+		      const englishVoice = voices.find((voice) => voice.lang && voice.lang.toLowerCase().startsWith("en"));
+		
+		      if (englishVoice) {
+		        speech.voice = englishVoice;
+		      }
+		
+		      speech.volume = 1;
+		      speech.rate = 1.12;
+		      speech.pitch = 0.95;
+		
+		      window.speechSynthesis.cancel();
+		      window.speechSynthesis.speak(speech);
+		    }
+		
+		    function makeIdea() {
+		      if (isRevealing) {
+		        return;
+		      }
+		
+		      setDealing(true);
+		      window.clearTimeout(revealTimer);
+		
+		      const index = Math.floor(Math.random() * codingIdeas.length);
+		      const reveal = `All right, player. Is this your card? Your idea is: ${codingIdeas[index]}`;
+		      const setup = "Welcome to The Idea Dealer table. Place your bet and pick a project card.";
+		
+		      ideaBox.textContent = setup;
+		
+		      revealTimer = window.setTimeout(() => {
+		        ideaBox.textContent = reveal;
+		        say(reveal);
+		        window.setTimeout(() => setDealing(false), revealCooldown);
+		      }, 1800);
+		    }
+		
+		    ideaButton.addEventListener("click", makeIdea);
+		
+		    window.addEventListener("keydown", (event) => {
+		      if (event.repeat) {
+		        return;
+		      }
+		
+		      if (event.key.toLowerCase() === "q" || event.key === "Escape") {
+		        setDealing(false);
+		        window.clearTimeout(revealTimer);
+		        window.speechSynthesis.cancel();
+		        ideaBox.textContent = "Stopped. Refresh the page to start again.";
+		        return;
+		      }
+		
+		      makeIdea();
+		    });
+		  </script>
+		  <main>
+		    <h2>What is The Idea Dealer?</h2>
+		    <p>The Idea Dealer is a simple project idea generator for moments when you have coder's block. Coder's block is like writer's block: you want to make something, but your brain cannot pick a project to start with.</p>
+		    <p>When you press a key or click the button, The Idea Dealer chooses a random coding idea from a list and shows it on the page. It is meant to help you stop staring at a blank screen and quickly find something fun to build, practice, or remix into your own project.</p>
+		  </main>
+		
+		</body>
+		</html>

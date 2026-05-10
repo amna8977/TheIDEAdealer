@@ -1,0 +1,34 @@
+No-Screen The Idea Dealer Build
+========================
+
+Goal:
+Press a physical button on the robot and hear The Idea Dealer say a random project idea.
+
+Hardware:
+- Arduino Uno
+- Push button
+- USB cable
+- Laptop or computer nearby
+- Speaker
+- Cardboard or wood robot body
+
+Wiring:
+- One side of the button goes to Arduino pin 2.
+- The other side of the button goes to Arduino GND.
+
+How it works:
+1. The button is pressed.
+2. The Arduino sends the word "idea" over USB Serial.
+3. robot_ideaman.py hears the message.
+4. The computer chooses an idea.
+5. The speaker says the idea out loud.
+
+Good physical layout:
+- Put the button on the chest.
+- Hide the speaker in the head or chest.
+- Run the Arduino USB cable out the back to the laptop/computer.
+- The robot does not need a monitor.
+
+Best command:
+cd C:\Users\sguls\world\robot-ideaman
+python .\robot_ideaman.py
