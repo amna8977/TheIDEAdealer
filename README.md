@@ -1,8 +1,11 @@
 # TheIDEAdealer
-===============
+
 
 The Idea Dealer is a button-powered card table that gives random coding project ideas.
 Press the robot button, and the computer or website speaks an idea out loud.
+Visit the website at (https://amna8977.github.io/TheIDEAdealer/)
+
+===============
 <img width="4032" height="3024" alt="IMG_2172" src="https://github.com/user-attachments/assets/77308c5b-a2c5-4752-a267-bb8ae63b488f" />
 
 
@@ -154,7 +157,7 @@ Button does nothing:
 Website cannot connect to Arduino:
 
 - Use Chrome or Edge.
-- Open the page from http://localhost:8000/robot_voice.html.
+- Open the page from (https://amna8977.github.io/TheIDEAdealer/)
 - Close Python and Arduino Serial Monitor first.
 
 No voice:
